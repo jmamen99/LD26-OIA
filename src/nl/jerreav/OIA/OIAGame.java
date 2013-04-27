@@ -39,7 +39,7 @@ public class OIAGame extends Game {
 			super.render();
 			
 			
-			fpslogger.log();
+//			fpslogger.log();
 		}
 
 		@Override

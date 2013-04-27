@@ -3,22 +3,27 @@ package nl.jerreav.OIA;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Array;
 
 public class Tile {
 	private static Texture tilesTexture = new Texture(Gdx.files.internal("pics/tiles.png"));
 	private static TextureRegion[][] tilesRegions = TextureRegion.split(tilesTexture, 2, 2);
 	private Sprite tileSprite;
+	Pixmap pixMap;
 	private TileColor 	color;
-	private Color		activeColor;
-	private Color		inactiveColor;
-	private int 		size;
+	Color		activeColor;
+	Color		inactiveColor;
+	int 		size;
 	private TileShape 	shape;
-	private int 		x,y;
+	int 				x;
+	int 				y;
 	private int			rotation;
 	private boolean		isActive = true;
+	private Array<Tile> neighbours;
 	
 	Tile(TileColor _color, int _size, TileShape _shape, int _x, int _y, int _rotation){
 		color = _color;
@@ -28,10 +33,11 @@ public class Tile {
 		y = _y;
 		rotation = _rotation;
 		
+		neighbours = new Array<Tile>();
 		
 		switch(shape){
 		case SQUARE:
-			tileSprite = new Sprite(tilesRegions[0][0]);
+			tileSprite = new Sprite(tilesRegions[0][7]);
 			break;
 		case LONG:
 			tileSprite = new Sprite(tilesRegions[0][1]);
@@ -55,9 +61,18 @@ public class Tile {
 			break;
 		default:
 		}
-		
+
 		tileSprite.setBounds(x, y, size*U.SPRITESIZE, size*U.SPRITESIZE);
-		tileSprite.setRotation(rotation*90);
+		tileSprite.setOrigin(size*U.SPRITESIZE/2, size*U.SPRITESIZE/2);
+		
+		if(shape == TileShape.LONG){
+			tileSprite.setRotation(rotation*-90);
+		}
+		if(shape == TileShape.CORNER){
+			tileSprite.setRotation(rotation*90);
+		}
+		
+		pixMap = TileShape.getMask(shape,size, rotation);
 	}
 		
 	void render(){
@@ -70,7 +85,6 @@ public class Tile {
 		}
 //		Gdx.app.log("Tile", "render");
 		tileSprite.draw(U.batch);
-		
 	}
 	
 	

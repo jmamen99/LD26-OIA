@@ -18,7 +18,7 @@ public class U {
 	public final static Sprite emptySprite = new Sprite(emptyTexture);
 	public final static SpriteBatch batch = new SpriteBatch();
 	public static int w,h;
-	public final static int SPRITESIZE = 16;
+	public final static int SPRITESIZE = 32;
 	
 	static float map(float n, float inMin, float inMax, float outMin, float outMax ){
 		float out = 0.0f;
@@ -44,6 +44,11 @@ public class U {
 		shapeRenderer.dispose();
 		font.dispose();
 		emptyTexture.dispose();
+	}
+
+	public static float log2(float size) {
+		
+		return (float) (Math.log(size)/Math.log(2));
 	}
 
 }
