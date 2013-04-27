@@ -18,7 +18,7 @@ public class AbstractLevel implements Screen {
 	
 	AbstractLevel(Game _game){
 		game = _game;
-		grid = new Grid(15,15);
+		grid = new Grid(12,12);
 		gameInputProcessor = new GameInputProcessor(this);
 	}
 	

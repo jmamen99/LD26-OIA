@@ -75,7 +75,7 @@ public class Tile {
 		pixMap = TileShape.getMask(shape,size, rotation);
 	}
 		
-	void render(){
+	void render(int xOffset, int yOffset){
 		
 		if(isActive){
 			tileSprite.setColor(activeColor);
@@ -84,6 +84,7 @@ public class Tile {
 			tileSprite.setColor(inactiveColor);
 		}
 //		Gdx.app.log("Tile", "render");
+		tileSprite.setBounds(x+xOffset, y+yOffset, size*U.SPRITESIZE, size*U.SPRITESIZE);
 		tileSprite.draw(U.batch);
 //		U.font.draw(U.batch,"N:" + neighbours.size,x,y+20);
 	}

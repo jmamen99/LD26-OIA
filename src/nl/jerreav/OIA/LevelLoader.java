@@ -41,16 +41,16 @@ public class LevelLoader {
 			for(int j = 0; j < p.getHeight(); j++){
 				int c = p.getPixel(i, j);
 				if(c == red){
-					Gdx.app.log("LevelLoader", "red " + (i*U.SPRITESIZE) + "," + (U.h-j*U.SPRITESIZE-U.SPRITESIZE));
-					grid.addNewTile(new Tile(TileColor.RED, size, shape,i*U.SPRITESIZE, U.h-j*U.SPRITESIZE-U.SPRITESIZE, rotation));
+					Gdx.app.log("LevelLoader", "red " + (i*U.SPRITESIZE) + "," + (grid.sizeY*U.SPRITESIZE-j*U.SPRITESIZE-U.SPRITESIZE));
+					grid.addNewTile(new Tile(TileColor.RED, size, shape,i*U.SPRITESIZE, grid.sizeY*U.SPRITESIZE-j*U.SPRITESIZE-U.SPRITESIZE, rotation));
 				}
 				else if(c == yellow){
-					Gdx.app.log("LevelLoader", "yellow  " + (i*U.SPRITESIZE) + "," + (U.h-j*U.SPRITESIZE-U.SPRITESIZE));
-					grid.addNewTile(new Tile(TileColor.YELLOW, size, shape,i*U.SPRITESIZE, U.h-j*U.SPRITESIZE-U.SPRITESIZE, rotation));
+					Gdx.app.log("LevelLoader", "yellow  " + (i*U.SPRITESIZE) + "," + (grid.sizeY*U.SPRITESIZE-j*U.SPRITESIZE-U.SPRITESIZE));
+					grid.addNewTile(new Tile(TileColor.YELLOW, size, shape,i*U.SPRITESIZE, grid.sizeY*U.SPRITESIZE-j*U.SPRITESIZE-U.SPRITESIZE, rotation));
 				}
 				else if(c == blue){
-					Gdx.app.log("LevelLoader", "blue " + (i*U.SPRITESIZE) + "," + (U.h-j*U.SPRITESIZE-U.SPRITESIZE));
-					grid.addNewTile(new Tile(TileColor.BLUE, size, shape,i*U.SPRITESIZE, U.h-j*U.SPRITESIZE-U.SPRITESIZE, rotation));
+					Gdx.app.log("LevelLoader", "blue " + (i*U.SPRITESIZE) + "," + (grid.sizeY*U.SPRITESIZE-j*U.SPRITESIZE-U.SPRITESIZE));
+					grid.addNewTile(new Tile(TileColor.BLUE, size, shape,i*U.SPRITESIZE, grid.sizeY*U.SPRITESIZE-j*U.SPRITESIZE-U.SPRITESIZE, rotation));
 				}
 			}
 		}

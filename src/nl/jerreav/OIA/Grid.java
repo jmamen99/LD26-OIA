@@ -11,6 +11,8 @@ public class Grid {
 	int sizeX, sizeY;
 	Statistics statistics;
 	Sequencer sequencer;
+	private int yOffset = (int)(1.5*U.SPRITESIZE);
+	private int xOffset = (int)(1.5*U.SPRITESIZE);
 	
 	
 	Grid(int _sizeX, int _sizeY){
@@ -59,14 +61,14 @@ public class Grid {
 
 	public void render() {
 		for(Tile t:tiles){
-			t.render();
+			t.render(xOffset,yOffset);
 		}
 		for(GridSocket[] sA:sockets){
 			for(GridSocket s:sA){
 //				s.render();
 			}
 		}
-		sequencer.render();
+		sequencer.render(xOffset, yOffset);
 		statistics.render();
 	}
 
