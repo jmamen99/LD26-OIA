@@ -1,6 +1,8 @@
 package nl.jerreav.OIA;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
 public class Statistics {
@@ -8,10 +10,15 @@ public class Statistics {
 	int smalls,mediums,larges;
 	int squares,longs,corners;
 	int redyellows, yellowblues,bluereds;
+	int[] statsArray;
 	Array<Tile> tiles;
+	
+	private static Texture iconsTexture = new Texture(Gdx.files.internal("pics/icons.png"));
+	private static TextureRegion[][] icons = TextureRegion.split(iconsTexture, 8, 8);
 	
 	Statistics(Array<Tile> _tiles){
 		tiles = _tiles;
+		statsArray = new int[16];
 		update();
 	}
 
@@ -69,8 +76,25 @@ public class Statistics {
 				}
 			}
 		}
+
+		statsArray[0] = reds;statsArray[1] =  yellows; statsArray[2] = blues;
+		statsArray[4] = smalls; statsArray[5] = mediums;statsArray[6] =  larges;
+		statsArray[8] = squares; statsArray[9] = longs; statsArray[10] = corners;
+		statsArray[12] = redyellows; statsArray[13] = yellowblues; statsArray[14] = bluereds;
+		
 		Gdx.app.log("Statistics", "updated");
 	}
 	
+	
+	void render(){
+		for(int i = 0; i < 4; i++){
+			for(int j = 0; j < 4; j++){
+				U.batch.draw(icons[j][i],U.h+U.SPRITESIZE, U.h-(j*4+i)*U.SPRITESIZE-U.SPRITESIZE*3/4,U.SPRITESIZE/2,U.SPRITESIZE/2);
+				if((j*4+i)%4 != 3){
+					U.font.draw(U.batch, "" + statsArray[j*4+i],U.h+U.SPRITESIZE*2, U.h-(j*4+i)*U.SPRITESIZE-U.SPRITESIZE*1/4);
+				}
+			}
+		}
+	}
 	
 }

@@ -63,6 +63,7 @@ public class Grid {
 //				s.render();
 			}
 		}
+		statistics.render();
 	}
 
 	public void touchDown(int screenX, int screenY, int pointer, int button) {
@@ -72,6 +73,7 @@ public class Grid {
 		if(x < sizeX && y < sizeY){
 			sockets[x][y].touchDown(button);
 		}
+		statistics.update();
 		
 		
 	}
