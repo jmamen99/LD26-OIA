@@ -14,6 +14,8 @@ public class U {
 	public final static ShapeRenderer shapeRenderer = new ShapeRenderer();
 	public final static BitmapFont font = new BitmapFont(Gdx.files.internal("fonts/pix16.fnt"),
 			Gdx.files.internal("fonts/pix16.png"),false);
+	public final static BitmapFont fontLarge = new BitmapFont(Gdx.files.internal("fonts/pix128.fnt"),
+			Gdx.files.internal("fonts/pix128.png"),false);
 	public final static Texture emptyTexture = new Texture(Gdx.files.internal("pics/empty.png"));
 	public final static Sprite emptySprite = new Sprite(emptyTexture);
 	public final static SpriteBatch batch = new SpriteBatch();

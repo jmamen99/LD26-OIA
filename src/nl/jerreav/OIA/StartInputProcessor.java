@@ -39,7 +39,7 @@ public class StartInputProcessor implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		game.setScreen(new AbstractLevel(game));
+		game.setScreen(new LevelTutorial1(game));
 		return false;
 	}
 

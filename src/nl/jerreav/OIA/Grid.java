@@ -15,7 +15,7 @@ public class Grid {
 	private int xOffset = (int)(1.5*U.SPRITESIZE);
 	
 	
-	Grid(int _sizeX, int _sizeY){
+	Grid(int _sizeX, int _sizeY, String path){
 		sizeX = _sizeX;
 		sizeY = _sizeY;
 		
@@ -29,11 +29,11 @@ public class Grid {
 		
 		tiles = new Array<Tile>();
 
-		LevelLoader.loadLevel("pics/levels/1/", this);
+		LevelLoader.loadLevel(path, this);
 		calculateNeighbours();
 		statistics = new Statistics(tiles);
 		sequencer = new Sequencer(sockets, sizeX, sizeY);
-//		sequencer.start();
+		sequencer.start();
 	}
 
 	private void calculateNeighbours() {
