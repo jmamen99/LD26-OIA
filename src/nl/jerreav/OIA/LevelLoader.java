@@ -16,7 +16,7 @@ public class LevelLoader {
 		readPixmap(grid,path + "r_1_1.png",TileShape.SQUARE,1,0);
 		readPixmap(grid,path + "r_2_1.png",TileShape.SQUARE,2,0);
 		readPixmap(grid,path + "r_4_1.png",TileShape.SQUARE,4,0);
-//
+
 		readPixmap(grid,path + "c_2_1.png",TileShape.CORNER,2,0);
 		readPixmap(grid,path + "c_2_2.png",TileShape.CORNER,2,1);
 		readPixmap(grid,path + "c_2_3.png",TileShape.CORNER,2,2);

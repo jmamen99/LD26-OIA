@@ -9,6 +9,8 @@ public class Grid {
 	GridSocket[][] sockets;
 	Array<Tile> tiles;
 	int sizeX, sizeY;
+	Statistics statistics;
+	
 	
 	Grid(int _sizeX, int _sizeY){
 		sizeX = _sizeX;
@@ -17,7 +19,7 @@ public class Grid {
 		sockets = new GridSocket[sizeX][sizeY];
 		for(int i = 0; i < sizeX; i++){
 			for(int j = 0; j < sizeY; j++){
-				sockets[i][j] = new GridSocket(i*U.SPRITESIZE,j*U.SPRITESIZE);
+				sockets[i][j] = new GridSocket(i*U.SPRITESIZE,j*U.SPRITESIZE,this);
 			}
 		}
 		
@@ -25,7 +27,16 @@ public class Grid {
 		tiles = new Array<Tile>();
 
 		LevelLoader.loadLevel("pics/levels/1/", this);
-//		addNewTile(new Tile(TileColor.YELLOW, 4, TileShape.SQUARE, 11*U.SPRITESIZE, 9*U.SPRITESIZE, 0));
+		calculateNeighbours();
+		statistics = new Statistics(tiles);
+	}
+
+	private void calculateNeighbours() {
+		for(int i = 0; i < sizeX; i++){
+			for (int j = 0; j < sizeY; j++){
+				sockets[i][j].calculateNeighbours(i,j);
+			}
+		}
 	}
 
 	public void addNewTile(Tile tile) {
@@ -35,7 +46,6 @@ public class Grid {
 			for(int j = 0; j < p.getHeight(); j++){
 //				Gdx.app.log("Grid", tile.size + "no ");
 				if(p.getPixel(i, j) == Color.rgba8888(1,1,1,1)){
-//					Gdx.app.log("Grid", tile.size + " " + (tile.x/U.SPRITESIZE+i) + " " + (tile.y/U.SPRITESIZE+j+p.getHeight()-1) + " ");
 					sockets[tile.x/U.SPRITESIZE+i][tile.y/U.SPRITESIZE-j+p.getHeight()-1].tile = tile;
 					Gdx.app.log("Grid", tile.size + " " + (tile.x/U.SPRITESIZE+i) + " " + (tile.y/U.SPRITESIZE+j+p.getHeight()-1) + " ");
 				}

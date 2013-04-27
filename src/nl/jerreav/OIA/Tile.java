@@ -14,16 +14,16 @@ public class Tile {
 	private static TextureRegion[][] tilesRegions = TextureRegion.split(tilesTexture, 2, 2);
 	private Sprite tileSprite;
 	Pixmap pixMap;
-	private TileColor 	color;
+	TileColor 	color;
 	Color		activeColor;
 	Color		inactiveColor;
 	int 		size;
-	private TileShape 	shape;
+	TileShape 	shape;
 	int 				x;
 	int 				y;
 	private int			rotation;
 	boolean		isActive = true;
-	private Array<Tile> neighbours;
+	Array<Tile> neighbours;
 	
 	Tile(TileColor _color, int _size, TileShape _shape, int _x, int _y, int _rotation){
 		color = _color;
@@ -85,6 +85,7 @@ public class Tile {
 		}
 //		Gdx.app.log("Tile", "render");
 		tileSprite.draw(U.batch);
+//		U.font.draw(U.batch,"N:" + neighbours.size,x,y+20);
 	}
 	
 	
