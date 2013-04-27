@@ -22,7 +22,7 @@ public class Tile {
 	int 				x;
 	int 				y;
 	private int			rotation;
-	boolean		isActive = true;
+	boolean		isActive = false;
 	Array<Tile> neighbours;
 	
 	Tile(TileColor _color, int _size, TileShape _shape, int _x, int _y, int _rotation){
@@ -49,15 +49,15 @@ public class Tile {
 		switch(color){
 		case RED:
 			activeColor = new Color(1,0,0,1);
-			inactiveColor = new Color(1,0.9f,0.9f,1);
+			inactiveColor = new Color(1,0.92f,0.92f,1);
 			break;
 		case YELLOW:
 			activeColor = new Color(1,1,0,1);
-			inactiveColor = new Color(1,1,0.9f,1);
+			inactiveColor = new Color(1,1,0.92f,1);
 			break;
 		case BLUE:
 			activeColor = new Color(0,0,1,1);
-			inactiveColor = new Color(0.9f,0.9f,1,1);
+			inactiveColor = new Color(0.92f,0.92f,1,1);
 			break;
 		default:
 		}

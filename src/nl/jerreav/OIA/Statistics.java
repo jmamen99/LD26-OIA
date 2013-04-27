@@ -1,5 +1,10 @@
 package nl.jerreav.OIA;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+
+import javax.imageio.ImageIO;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -10,6 +15,7 @@ public class Statistics {
 	int smalls,mediums,larges;
 	int squares,longs,corners;
 	int redyellows, yellowblues,bluereds;
+	int totalTiles;
 	int[] statsArray;
 	Array<Tile> tiles;
 	
@@ -27,8 +33,10 @@ public class Statistics {
 		smalls = 0; mediums = 0; larges = 0;
 		squares = 0; longs = 0; corners = 0;
 		redyellows = 0; yellowblues = 0; bluereds = 0;
+		totalTiles = 0;
 		for(Tile t: tiles){
 			if(t.isActive){
+				totalTiles++;
 				switch(t.color){
 				case RED:
 					for(Tile n:t.neighbours){
@@ -89,12 +97,21 @@ public class Statistics {
 	void render(){
 		for(int i = 0; i < 4; i++){
 			for(int j = 0; j < 4; j++){
-				U.batch.draw(icons[j][i],U.h+U.SPRITESIZE, U.h-(j*4+i)*U.SPRITESIZE-U.SPRITESIZE*3/4,U.SPRITESIZE/2,U.SPRITESIZE/2);
-				if((j*4+i)%4 != 3){
+				int k = j*4+i;
+				U.batch.draw(icons[j][i],U.h+U.SPRITESIZE, U.h-(k)*U.SPRITESIZE-U.SPRITESIZE*3/4,U.SPRITESIZE/2,U.SPRITESIZE/2);
+				if(k%4 != 3){
+					if(statsArray[k] < 5 || statsArray[k] > 8){
+						U.font.setColor(1, 0, 0, 1);
+					}
+					else{
+						U.font.setColor(0,1,0,1);
+					}
 					U.font.draw(U.batch, "" + statsArray[j*4+i],U.h+U.SPRITESIZE*2, U.h-(j*4+i)*U.SPRITESIZE-U.SPRITESIZE*1/4);
 				}
 			}
 		}
+		U.font.setColor(0.5f,0.5f,0.5f,1);
+		U.font.draw(U.batch, "#:" + totalTiles, U.h+U.SPRITESIZE*6 , U.h/2);
 	}
 	
 }

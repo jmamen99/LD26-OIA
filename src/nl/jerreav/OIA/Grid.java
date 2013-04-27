@@ -10,6 +10,7 @@ public class Grid {
 	Array<Tile> tiles;
 	int sizeX, sizeY;
 	Statistics statistics;
+	Sequencer sequencer;
 	
 	
 	Grid(int _sizeX, int _sizeY){
@@ -29,6 +30,8 @@ public class Grid {
 		LevelLoader.loadLevel("pics/levels/1/", this);
 		calculateNeighbours();
 		statistics = new Statistics(tiles);
+		sequencer = new Sequencer(sockets, sizeX, sizeY);
+		sequencer.start();
 	}
 
 	private void calculateNeighbours() {
@@ -63,6 +66,7 @@ public class Grid {
 //				s.render();
 			}
 		}
+		sequencer.render();
 		statistics.render();
 	}
 
@@ -70,7 +74,8 @@ public class Grid {
 		int x = screenX/U.SPRITESIZE;
 		int y = (U.h-screenY)/U.SPRITESIZE;
 		Gdx.app.log("Grid", "clicked on " + screenX + "," + screenY + " converted to " + x + "," + y);
-		if(x < sizeX && y < sizeY){
+		if(x < sizeX && x >= 0 &&
+				y < sizeY && y >= 0){
 			sockets[x][y].touchDown(button);
 		}
 		statistics.update();

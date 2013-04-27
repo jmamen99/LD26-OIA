@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 
 public class OIAGame extends Game {
 		private OrthographicCamera camera;
-		public static final String LOG = OIAGame.class.getSimpleName();
+		public static final String LOG = "OIA";
 		private FPSLogger fpslogger;
 		
 		@Override
