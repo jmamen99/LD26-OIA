@@ -2,6 +2,8 @@ package nl.jerreav.OIA;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.TimeUtils;
 
@@ -17,7 +19,9 @@ public class Sequencer {
 //	public static Sound[] strings = {Gdx.audio.newSound(Gdx.files.internal("audio/strings_low.mp3")),
 //		Gdx.audio.newSound(Gdx.files.internal("audio/strings_mid.mp3")),
 //		Gdx.audio.newSound(Gdx.files.internal("audio/strings_high.mp3"))};
-	
+
+	private static Texture musicTexture = new Texture(Gdx.files.internal("pics/music.png"));
+	private static TextureRegion[][] musicRegions = TextureRegion.split(musicTexture, 16, 8);
 
 	public static Sound[] sine = {Gdx.audio.newSound(Gdx.files.internal("audio/sine_1.mp3")),
 		Gdx.audio.newSound(Gdx.files.internal("audio/sine_2.mp3")),
@@ -136,7 +140,7 @@ public class Sequencer {
 						break;
 					}
 				}
-				soundX.play(0.5f);
+				soundX.play(MathUtils.random(0.4f, 0.6f));
 				
 				if(toggle){
 					x2++;
@@ -159,7 +163,7 @@ public class Sequencer {
 						}
 						
 					}
-					soundX2.play(0.5f);
+					soundX2.play(MathUtils.random(0.4f, 0.6f));
 					toggle = false;
 				}
 				else{
@@ -167,6 +171,10 @@ public class Sequencer {
 				}
 					
 			}
+			U.batch.draw(musicRegions[0][1],U.w-U.SPRITESIZE,U.SPRITESIZE/2,U.SPRITESIZE,U.SPRITESIZE/2);
+		}
+		else{
+			U.batch.draw(musicRegions[0][0],U.w-U.SPRITESIZE,U.SPRITESIZE/2,U.SPRITESIZE,U.SPRITESIZE/2);
 		}
 	}
 	

@@ -11,13 +11,15 @@ public class Grid {
 	int sizeX, sizeY;
 	Statistics statistics;
 	Sequencer sequencer;
+	Goal goal;
 	private int yOffset = (int)(1.5*U.SPRITESIZE);
 	private int xOffset = (int)(1.5*U.SPRITESIZE);
 	
 	
-	Grid(int _sizeX, int _sizeY, String path){
+	Grid(int _sizeX, int _sizeY, String path, Goal _goal){
 		sizeX = _sizeX;
 		sizeY = _sizeY;
+		goal = _goal;
 		
 		sockets = new GridSocket[sizeX][sizeY];
 		for(int i = 0; i < sizeX; i++){
@@ -31,7 +33,7 @@ public class Grid {
 
 		LevelLoader.loadLevel(path, this);
 		calculateNeighbours();
-		statistics = new Statistics(tiles);
+		statistics = new Statistics(tiles,goal.minima,goal.maxima);
 		sequencer = new Sequencer(sockets, sizeX, sizeY);
 		sequencer.start();
 	}

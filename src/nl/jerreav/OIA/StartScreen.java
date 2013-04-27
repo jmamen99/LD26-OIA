@@ -10,7 +10,7 @@ public class StartScreen implements Screen {
 
 	Game game;
 	String title = "OIA 0.14";
-	String subTitle = "Minimize Puzzles  -  Create Minimal Artworks  -  Now Press Play To Start";
+	String subTitle = "Minimize Puzzles  -  Create Minimal Artworks  -  Click Somewhere To Start";
 	StartInputProcessor startInputProcessor;
 	
 	StartScreen(Game _game){

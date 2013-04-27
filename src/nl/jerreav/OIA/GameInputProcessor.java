@@ -18,6 +18,14 @@ public class GameInputProcessor implements InputProcessor {
 		case Keys.ESCAPE:
 			level.game.setScreen(new StartScreen(level.game));
 			break;
+		case Keys.S:
+			if(level.grid.sequencer.isPlaying){
+				level.grid.sequencer.stop();
+			}
+			else{
+				level.grid.sequencer.start();
+			}
+			break;
 		}
 		return false;
 	}
@@ -37,6 +45,9 @@ public class GameInputProcessor implements InputProcessor {
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		level.grid.touchDown(screenX,screenY,pointer,button);
+		if(level.goal.checkGoal(level.grid.statistics.statsArray)){
+			level.game.setScreen(level.nextLevel);
+		}
 		return false;
 	}
 

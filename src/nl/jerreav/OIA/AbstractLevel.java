@@ -15,6 +15,8 @@ public class AbstractLevel implements Screen {
 //	GridSocket[][] grid; 
 	Game game;
 	GameInputProcessor gameInputProcessor;
+	Goal goal;
+	Screen nextLevel;
 	
 	AbstractLevel(Game _game){
 		game = _game;
@@ -32,6 +34,7 @@ public class AbstractLevel implements Screen {
 	U.batch.begin();
 	
 	grid.render();
+	goal.render();
 	
 	U.font.setColor(0.5f, 0.5f, 0.5f, 1.0f);
 	U.font.draw(U.batch, Integer.toString((int)(1.0f/Gdx.graphics.getDeltaTime()+0.5f)), 0, U.h-0);
