@@ -1,6 +1,7 @@
 package nl.jerreav.OIA;
 
 
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -13,12 +14,12 @@ public class AbstractLevel implements Screen {
 	Grid grid;
 //	GridSocket[][] grid; 
 	Game game;
+	GameInputProcessor gameInputProcessor;
 	
 	AbstractLevel(Game _game){
 		game = _game;
-
 		grid = new Grid(15,15);
-		
+		gameInputProcessor = new GameInputProcessor(this);
 	}
 	
 	
@@ -47,7 +48,7 @@ public class AbstractLevel implements Screen {
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
+		Gdx.input.setInputProcessor(gameInputProcessor);
 
 	}
 

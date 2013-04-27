@@ -53,9 +53,20 @@ public class Grid {
 		}
 		for(GridSocket[] sA:sockets){
 			for(GridSocket s:sA){
-				s.render();
+//				s.render();
 			}
 		}
+	}
+
+	public void touchDown(int screenX, int screenY, int pointer, int button) {
+		int x = screenX/U.SPRITESIZE;
+		int y = (U.h-screenY)/U.SPRITESIZE;
+		Gdx.app.log("Grid", "clicked on " + screenX + "," + screenY + " converted to " + x + "," + y);
+		if(x < sizeX && y < sizeY){
+			sockets[x][y].touchDown(button);
+		}
+		
+		
 	}
 
 }

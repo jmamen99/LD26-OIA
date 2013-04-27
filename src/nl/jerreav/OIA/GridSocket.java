@@ -17,5 +17,13 @@ public class GridSocket {
 			U.emptySprite.draw(U.batch);
 		}
 	}
+
+	public void touchDown(int button) {
+
+
+		if(tile != null){
+			tile.isActive = !tile.isActive;
+		}
+	}
 	
 }
