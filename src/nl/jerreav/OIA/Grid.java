@@ -33,7 +33,7 @@ public class Grid {
 		calculateNeighbours();
 		statistics = new Statistics(tiles);
 		sequencer = new Sequencer(sockets, sizeX, sizeY);
-		sequencer.start();
+//		sequencer.start();
 	}
 
 	private void calculateNeighbours() {
@@ -73,8 +73,8 @@ public class Grid {
 	}
 
 	public void touchDown(int screenX, int screenY, int pointer, int button) {
-		int x = screenX/U.SPRITESIZE;
-		int y = (U.h-screenY)/U.SPRITESIZE;
+		int x = (screenX-xOffset)/U.SPRITESIZE;
+		int y = (U.h-screenY-yOffset)/U.SPRITESIZE;
 		Gdx.app.log("Grid", "clicked on " + screenX + "," + screenY + " converted to " + x + "," + y);
 		if(x < sizeX && x >= 0 &&
 				y < sizeY && y >= 0){

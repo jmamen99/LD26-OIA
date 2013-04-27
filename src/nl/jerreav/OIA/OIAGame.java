@@ -22,7 +22,7 @@ public class OIAGame extends Game {
 			Gdx.app.log(OIAGame.LOG, "Creating Game...");
 			fpslogger = new FPSLogger();
 			
-			this.setScreen(new AbstractLevel(this));
+			this.setScreen(new StartScreen(this));
 		}
 
 		@Override

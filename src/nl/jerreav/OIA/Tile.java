@@ -22,7 +22,7 @@ public class Tile {
 	int 				x;
 	int 				y;
 	private int			rotation;
-	boolean		isActive = false;
+	boolean		isActive = true;
 	Array<Tile> neighbours;
 	
 	Tile(TileColor _color, int _size, TileShape _shape, int _x, int _y, int _rotation){

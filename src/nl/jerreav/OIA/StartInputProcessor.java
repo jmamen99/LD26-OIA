@@ -1,22 +1,25 @@
 package nl.jerreav.OIA;
+
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
 
-public class GameInputProcessor implements InputProcessor {
-	
-	AbstractLevel level;
+public class StartInputProcessor implements InputProcessor {
 
-	public GameInputProcessor(AbstractLevel _level) {
-		level = _level;
+	Game game;
+	public StartInputProcessor(Game _game) {
+		game = _game;
 	}
 
 	@Override
 	public boolean keyDown(int keycode) {
 		switch(keycode){
 		case Keys.ESCAPE:
-			level.game.setScreen(new StartScreen(level.game));
+			Gdx.app.exit();
+			break;
+		case Keys.SPACE:
+			game.setScreen(new AbstractLevel(game));
 			break;
 		}
 		return false;
@@ -36,18 +39,19 @@ public class GameInputProcessor implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		level.grid.touchDown(screenX,screenY,pointer,button);
+		game.setScreen(new AbstractLevel(game));
 		return false;
 	}
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		
+		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -64,5 +68,3 @@ public class GameInputProcessor implements InputProcessor {
 	}
 
 }
-
-

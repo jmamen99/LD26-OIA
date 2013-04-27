@@ -42,7 +42,6 @@ public class Statistics {
 					for(Tile n:t.neighbours){
 						if(n.isActive && n.color == TileColor.YELLOW){
 							redyellows++;
-							break;
 						}
 					}
 					reds++;
@@ -51,7 +50,6 @@ public class Statistics {
 					for(Tile n:t.neighbours){
 						if(n.isActive && n.color == TileColor.BLUE){
 							yellowblues++;
-							break;
 						}
 					}
 					yellows++;
@@ -60,7 +58,6 @@ public class Statistics {
 					for(Tile n:t.neighbours){
 						if(n.isActive && n.color == TileColor.RED){
 							bluereds++;
-							break;
 						}
 					}
 					blues++;
