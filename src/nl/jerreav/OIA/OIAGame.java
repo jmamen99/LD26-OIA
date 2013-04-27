@@ -21,7 +21,8 @@ public class OIAGame extends Game {
 			
 			Gdx.app.log(OIAGame.LOG, "Creating Game...");
 			fpslogger = new FPSLogger();
-			
+			//preloading
+			Sequencer s = new Sequencer(null, 1,1);
 			this.setScreen(new StartScreen(this));
 		}
 

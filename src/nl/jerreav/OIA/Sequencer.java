@@ -34,7 +34,51 @@ public class Sequencer {
 		Gdx.audio.newSound(Gdx.files.internal("audio/sine_13.mp3")),
 		Gdx.audio.newSound(Gdx.files.internal("audio/sine_14.mp3")),
 		Gdx.audio.newSound(Gdx.files.internal("audio/sine_15.mp3"))};
-	
+	public static Sound[] isine = {Gdx.audio.newSound(Gdx.files.internal("audio/i/sine_1.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/i/sine_2.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/i/sine_3.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/i/sine_4.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/i/sine_5.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/i/sine_6.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/i/sine_7.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/i/sine_8.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/i/sine_9.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/i/sine_10.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/i/sine_11.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/i/sine_12.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/i/sine_13.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/i/sine_14.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/i/sine_15.mp3"))};
+	public static Sound[] asine = {Gdx.audio.newSound(Gdx.files.internal("audio/a/sine_1.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/a/sine_2.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/a/sine_3.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/a/sine_4.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/a/sine_5.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/a/sine_6.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/a/sine_7.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/a/sine_8.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/a/sine_9.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/a/sine_10.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/a/sine_11.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/a/sine_12.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/a/sine_13.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/a/sine_14.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/a/sine_15.mp3"))};
+	public static Sound[] usine = {Gdx.audio.newSound(Gdx.files.internal("audio/u/sine_1.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/u/sine_2.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/u/sine_3.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/u/sine_4.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/u/sine_5.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/u/sine_6.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/u/sine_7.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/u/sine_8.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/u/sine_9.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/u/sine_10.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/u/sine_11.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/u/sine_12.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/u/sine_13.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/u/sine_14.mp3")),
+		Gdx.audio.newSound(Gdx.files.internal("audio/u/sine_15.mp3"))};
 	
 	
 	GridSocket[][] sockets;
@@ -48,11 +92,9 @@ public class Sequencer {
 	private long time = 0;
 	final static long timeDif = 200;
 	boolean toggle = false;
-
-
-
-	private int lastX;
-	private int lastX2;
+	
+	private Sound soundX;
+	private Sound soundX2;
 	
 	
 	Sequencer(GridSocket[][] _sockets, int _sizeX, int _sizeY){
@@ -67,7 +109,7 @@ public class Sequencer {
 	void render(int xOffset, int yOffset){
 		if(isPlaying){
 			
-			U.emptySprite.setColor(0,0,0,0.4f);
+			U.emptySprite.setColor(1,1,1,1f);
 			U.drawRectOutLines(U.batch, x*U.SPRITESIZE+xOffset, y*U.SPRITESIZE+yOffset, U.SPRITESIZE, U.SPRITESIZE, 2);
 			U.drawRectOutLines(U.batch, x2*U.SPRITESIZE+xOffset, y2*U.SPRITESIZE+yOffset, U.SPRITESIZE, U.SPRITESIZE, 2);
 			
@@ -82,20 +124,19 @@ public class Sequencer {
 				time += timeDif;
 				Tile t = sockets[x][y].tile;
 				if(t != null && t.isActive){
-//					switch(t.color){
-//					case RED:
-//						piano[2-(int)U.log2(t.size)].play();
-//						break;
-//					case YELLOW:
-//						marimba[2-(int)U.log2(t.size)].play();
-//						break;
-//					case BLUE:
-//						strings[2-(int)U.log2(t.size)].play();
-//						break;
-//					}
-					lastX = (int)((2-U.log2(t.size))*5 + MathUtils.random(4));
+					switch(t.color){
+					case RED:
+						soundX = sine[(int)((2-U.log2(t.size))*5 + MathUtils.random(5))%15];
+						break;
+					case YELLOW:
+						soundX = sine[(int)((2-U.log2(t.size))*5 + MathUtils.random(5))%15];
+						break;
+					case BLUE:
+						soundX = sine[(int)((2-U.log2(t.size))*5 + MathUtils.random(5))%15];
+						break;
+					}
 				}
-				sine[lastX].play(0.5f);
+				soundX.play(0.5f);
 				
 				if(toggle){
 					x2++;
@@ -105,20 +146,20 @@ public class Sequencer {
 					}
 					t = sockets[x2][y2].tile;
 					if(t != null && t.isActive){
-//						switch(t.color){
-//						case RED:
-//							piano[2-(int)U.log2(t.size)].play();
-//							break;
-//						case YELLOW:
-//							marimba[2-(int)U.log2(t.size)].play();
-//							break;
-//						case BLUE:
-//							strings[2-(int)U.log2(t.size)].play();
-//							break;
-//						}
-						lastX2 = (int)(U.log2(t.size)*5 + MathUtils.random(4));
+						switch(t.color){
+						case RED:
+							soundX2 = sine[(int)((2-U.log2(t.size))*5 + MathUtils.random(5))%15];
+							break;
+						case YELLOW:
+							soundX2 = sine[(int)((2-U.log2(t.size))*5 + MathUtils.random(5))%15];
+							break;
+						case BLUE:
+							soundX2 = sine[(int)((2-U.log2(t.size))*5 + MathUtils.random(5))%15];
+							break;
+						}
+						
 					}
-					sine[lastX2].play(0.5f);
+					soundX2.play(0.5f);
 					toggle = false;
 				}
 				else{
@@ -138,19 +179,8 @@ public class Sequencer {
 		y2 = sizeY/2;
 		Tile t = sockets[x][y].tile;
 		toggle = false;
-		if(t.isActive){
-//			switch(t.color){
-//			case RED:
-//				piano[(int)U.log2(t.size)].play();
-//				break;
-//			case YELLOW:
-//				marimba[(int)U.log2(t.size)].play();
-//				break;
-//			case BLUE:
-//				strings[(int)U.log2(t.size)].play();
-//				break;
-//			}
-		}
+		soundX = sine[0];
+		soundX2 = sine[0];
 	}
 	
 	void stop(){
