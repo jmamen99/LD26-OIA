@@ -18,7 +18,7 @@ public class U {
 	public final static Sprite emptySprite = new Sprite(emptyTexture);
 	public final static SpriteBatch batch = new SpriteBatch();
 	public static int w,h;
-	public final static int SPRITESIZE = 64;
+	public final static int SPRITESIZE = 16;
 	
 	static float map(float n, float inMin, float inMax, float outMin, float outMax ){
 		float out = 0.0f;
