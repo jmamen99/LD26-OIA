@@ -1,8 +1,10 @@
 package nl.jerreav.OIA;
 
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont.TextBounds;
 import com.badlogic.gdx.utils.Array;
 
@@ -15,6 +17,7 @@ public class Grid {
 	Goal goal;
 	private int yOffset = (int)(1.5*U.SPRITESIZE);
 	private int xOffset = (int)(1.5*U.SPRITESIZE);
+	Texture vink = new Texture(Gdx.files.internal("pics/vink.png"));
 	
 	
 	Grid(int _sizeX, int _sizeY, String path, Goal _goal){
@@ -75,6 +78,7 @@ public class Grid {
 		
 		if(goal.isReached){
 			U.fontLarge.setColor(0,1,0,1);
+			U.batch.draw(vink, U.w-4*U.SPRITESIZE, 10*U.SPRITESIZE, 4*U.SPRITESIZE, 4*U.SPRITESIZE);
 		}
 		else{
 			U.fontLarge.setColor(0.5f,0.5f,0.5f,1);

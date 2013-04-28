@@ -1,5 +1,6 @@
 package nl.jerreav.OIA;
 
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -12,24 +13,39 @@ public class LevelLoader {
 	
 	
 	public static void loadLevel(String path, Grid grid){
-		
+
+		Gdx.app.log("LevelLoader", "r_1_1.png");
 		readPixmap(grid,path + "r_1_1.png",TileShape.SQUARE,1,0);
+		Gdx.app.log("LevelLoader", "r_2_1.png");
 		readPixmap(grid,path + "r_2_1.png",TileShape.SQUARE,2,0);
+		Gdx.app.log("LevelLoader", "r_4_1.png");
 		readPixmap(grid,path + "r_4_1.png",TileShape.SQUARE,4,0);
 
+		Gdx.app.log("LevelLoader", "c_2_1.png");
 		readPixmap(grid,path + "c_2_1.png",TileShape.CORNER,2,0);
+		Gdx.app.log("LevelLoader", "c_2_2.png");
 		readPixmap(grid,path + "c_2_2.png",TileShape.CORNER,2,1);
+		Gdx.app.log("LevelLoader", "c_2_3.png");
 		readPixmap(grid,path + "c_2_3.png",TileShape.CORNER,2,2);
+		Gdx.app.log("LevelLoader", "c_2_4.png");
 		readPixmap(grid,path + "c_2_4.png",TileShape.CORNER,2,3);
-		
+
+		Gdx.app.log("LevelLoader", "c_4_1.png");
 		readPixmap(grid,path + "c_4_1.png",TileShape.CORNER,4,0);
+		Gdx.app.log("LevelLoader", "c_4_2.png");
 		readPixmap(grid,path + "c_4_2.png",TileShape.CORNER,4,1);
+		Gdx.app.log("LevelLoader", "c_4_3.png");
 		readPixmap(grid,path + "c_4_3.png",TileShape.CORNER,4,2);
+		Gdx.app.log("LevelLoader", "c_4_4.png");
 		readPixmap(grid,path + "c_4_4.png",TileShape.CORNER,4,3);
 
+		Gdx.app.log("LevelLoader", "l_2_1.png");
 		readPixmap(grid,path + "l_2_1.png",TileShape.LONG,2,0);
+		Gdx.app.log("LevelLoader", "l_2_2.png");
 		readPixmap(grid,path + "l_2_2.png",TileShape.LONG,2,1);
+		Gdx.app.log("LevelLoader", "l_4_1.png");
 		readPixmap(grid,path + "l_4_1.png",TileShape.LONG,4,0);
+		Gdx.app.log("LevelLoader", "l_4_2.png");
 		readPixmap(grid,path + "l_4_2.png",TileShape.LONG,4,1);
 		
 		

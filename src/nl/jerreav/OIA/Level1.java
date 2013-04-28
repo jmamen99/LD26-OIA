@@ -1,5 +1,6 @@
 package nl.jerreav.OIA;
 
+
 import com.badlogic.gdx.Game;
 
 public class Level1 extends AbstractLevel {

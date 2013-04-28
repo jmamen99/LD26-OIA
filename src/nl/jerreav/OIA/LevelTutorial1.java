@@ -1,5 +1,6 @@
 package nl.jerreav.OIA;
 
+
 import com.badlogic.gdx.Game;
 
 public class LevelTutorial1 extends AbstractLevel {
@@ -17,6 +18,6 @@ public class LevelTutorial1 extends AbstractLevel {
 		super(_game);
 		goal = new Goal(minima,maxima,5);
 		grid = new Grid(12,12,"pics/levels/tut/",goal);
-		nextLevel = new TextLevel1(game);
+		nextLevel = new TextLevel0(game);
 	}
 }

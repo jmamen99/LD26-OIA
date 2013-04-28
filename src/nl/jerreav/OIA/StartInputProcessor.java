@@ -21,7 +21,12 @@ public class StartInputProcessor implements InputProcessor {
 			Gdx.app.exit();
 			break;
 		case Keys.SPACE:
-			game.setScreen(screen.nextScreen);
+			if(screen.nextScreen != null){
+				game.setScreen(screen.nextScreen);
+			}
+			else{
+				game.setScreen(new StartScreen(game));
+			}
 			break;
 		}
 		return false;

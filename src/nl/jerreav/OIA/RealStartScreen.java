@@ -7,7 +7,7 @@ public class RealStartScreen extends StartScreen{
 	RealStartScreen(Game _game) {
 		super(_game);
 		nextScreen = new TextTutorial1(game);
-		title = "OIA 0.14";
+		title = "OIA";
 		subTitle = "Minimize Puzzles  -  Create Minimal Artworks  -  Click Somewhere To Start";
 		subTitle2 = "Made For Compo Of  -  Ludum Dare Twenty Six - Jerre van der Hulst";
 	}

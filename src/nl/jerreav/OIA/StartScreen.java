@@ -1,5 +1,6 @@
 package nl.jerreav.OIA;
 
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -31,7 +32,7 @@ public class StartScreen implements Screen {
 		U.batch.begin();
 
 		U.fontLarge.setColor(0.8f, 0.8f, 0.8f, 1.0f);
-		U.font.setColor(0.5f, 0.5f, 0.5f, 1.0f);
+		U.font.setColor(0.9f, 0.9f, 0.9f, 1.0f);
 		TextBounds tb = U.fontLarge.getBounds(title);
 		TextBounds tbSub = U.font.getBounds(subTitle);
 		TextBounds tbSub2 = U.font.getBounds(subTitle2);

@@ -8,8 +8,8 @@ public class EndScreen extends StartScreen {
 		super(_game);
 		nextScreen = null;
 		title = "FIN";
-		subTitle = " ";
-		subTitle2 = " ";
+		subTitle = "I Hope You Enjoyed  -  Let Me Give You Some Insights:  -  mOndrIAn's Vowels";
+		subTitle2 = "All Texts Are Haikus  -  The Music Is Adaptive  -  Sounds Are O,I,A";
 	} 
 
 }
