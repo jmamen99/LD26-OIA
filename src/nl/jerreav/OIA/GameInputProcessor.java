@@ -16,7 +16,8 @@ public class GameInputProcessor implements InputProcessor {
 	public boolean keyDown(int keycode) {
 		switch(keycode){
 		case Keys.ESCAPE:
-			level.game.setScreen(new StartScreen(level.game));
+		case Keys.Q:
+			level.game.setScreen(new RealStartScreen(level.game));
 			break;
 		case Keys.S:
 			if(level.grid.sequencer.isPlaying){
@@ -44,8 +45,7 @@ public class GameInputProcessor implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		level.grid.touchDown(screenX,screenY,pointer,button);
-		if(level.goal.checkGoal(level.grid.statistics.statsArray)){
+		if(level.grid.touchDown(screenX,screenY,pointer,button)){
 			level.game.setScreen(level.nextLevel);
 		}
 		return false;

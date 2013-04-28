@@ -94,7 +94,7 @@ public class Statistics {
 		statsArray[8] = squares; statsArray[9] = longs; statsArray[10] = corners;
 		statsArray[12] = redyellows; statsArray[13] = yellowblues; statsArray[14] = bluereds;
 		
-		Gdx.app.log("Statistics", "updated");
+//		Gdx.app.log("Statistics", "updated");
 	}
 	
 	
@@ -116,13 +116,10 @@ public class Statistics {
 						U.font.setColor(0,1,0,1);
 						U.batch.draw(arrows[0][2],U.h+U.SPRITESIZE*2, U.h-(k)*U.SPRITESIZE-U.SPRITESIZE*3/4,U.SPRITESIZE/2,U.SPRITESIZE/2);
 					}
-					U.font.draw(U.batch, "" + statsArray[j*4+i],U.h+U.SPRITESIZE*3, U.h-(j*4+i)*U.SPRITESIZE-U.SPRITESIZE*1/4);
+					U.font.draw(U.batch, "" + statsArray[k] + " (" + minima[k] + "<->" + maxima[k] + ")",U.h+U.SPRITESIZE*3, U.h-(j*4+i)*U.SPRITESIZE-U.SPRITESIZE*1/4);
 				}
 			}
 		}
-		U.fontLarge.setColor(0.5f,0.5f,0.5f,1);
-		TextBounds tb = U.fontLarge.getBounds("" + totalTiles);
-		U.fontLarge.draw(U.batch, "" + totalTiles, U.w-(U.w-U.h)/2+tb.width/2 , U.h/2+tb.height/2);
 	}
 	
 }

@@ -22,10 +22,10 @@ public class OIAGame extends Game {
 			camera = new OrthographicCamera();
 			camera.setToOrtho(false, U.w, U.h);
 			
-			Gdx.app.log(OIAGame.LOG, "Creating Game...");
+//			Gdx.app.log(OIAGame.LOG, "Creating Game...");
 			fpslogger = new FPSLogger();
 			//preloading
-			this.setScreen(new StartScreen(this));
+			this.setScreen(new RealStartScreen(this));
 		}
 
 		@Override

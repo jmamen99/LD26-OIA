@@ -17,6 +17,6 @@ public class LevelTutorial1 extends AbstractLevel {
 		super(_game);
 		goal = new Goal(minima,maxima,5);
 		grid = new Grid(12,12,"pics/levels/tut/",goal);
-		nextLevel = new Level1(game);
+		nextLevel = new TextLevel1(game);
 	}
 }

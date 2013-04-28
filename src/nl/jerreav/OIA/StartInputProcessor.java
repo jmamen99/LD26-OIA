@@ -8,8 +8,10 @@ import com.badlogic.gdx.Input.Keys;
 public class StartInputProcessor implements InputProcessor {
 
 	Game game;
-	public StartInputProcessor(Game _game) {
+	StartScreen screen;
+	public StartInputProcessor(Game _game, StartScreen _screen) {
 		game = _game;
+		screen = _screen;
 	}
 
 	@Override
@@ -19,7 +21,7 @@ public class StartInputProcessor implements InputProcessor {
 			Gdx.app.exit();
 			break;
 		case Keys.SPACE:
-			game.setScreen(new AbstractLevel(game));
+			game.setScreen(screen.nextScreen);
 			break;
 		}
 		return false;
@@ -39,7 +41,12 @@ public class StartInputProcessor implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		game.setScreen(new LevelTutorial1(game));
+		if(screen.nextScreen != null){
+			game.setScreen(screen.nextScreen);
+		}
+		else{
+			game.setScreen(new StartScreen(game));
+		}
 		return false;
 	}
 

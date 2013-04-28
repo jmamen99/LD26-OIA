@@ -3,6 +3,7 @@ package nl.jerreav.OIA;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.g2d.BitmapFont.TextBounds;
 import com.badlogic.gdx.utils.Array;
 
 public class Grid {
@@ -35,7 +36,6 @@ public class Grid {
 		calculateNeighbours();
 		statistics = new Statistics(tiles,goal.minima,goal.maxima);
 		sequencer = new Sequencer(sockets, sizeX, sizeY);
-		sequencer.start();
 	}
 
 	private void calculateNeighbours() {
@@ -54,7 +54,7 @@ public class Grid {
 //				Gdx.app.log("Grid", tile.size + "no ");
 				if(p.getPixel(i, j) == Color.rgba8888(1,1,1,1)){
 					sockets[tile.x/U.SPRITESIZE+i][tile.y/U.SPRITESIZE-j+p.getHeight()-1].tile = tile;
-					Gdx.app.log("Grid", tile.size + " " + (tile.x/U.SPRITESIZE+i) + " " + (tile.y/U.SPRITESIZE+j+p.getHeight()-1) + " ");
+//					Gdx.app.log("Grid", tile.size + " " + (tile.x/U.SPRITESIZE+i) + " " + (tile.y/U.SPRITESIZE+j+p.getHeight()-1) + " ");
 				}
 			}
 		}
@@ -72,19 +72,32 @@ public class Grid {
 		}
 		sequencer.render(xOffset, yOffset);
 		statistics.render();
+		
+		if(goal.isReached){
+			U.fontLarge.setColor(0,1,0,1);
+		}
+		else{
+			U.fontLarge.setColor(0.5f,0.5f,0.5f,1);
+		}
+		TextBounds tb = U.fontLarge.getBounds("" + statistics.totalTiles);
+		U.fontLarge.draw(U.batch, "" + statistics.totalTiles, U.w-tb.width , U.h/2+tb.height/2);
 	}
 
-	public void touchDown(int screenX, int screenY, int pointer, int button) {
+	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		boolean advanceLevel = false;
 		int x = (screenX-xOffset)/U.SPRITESIZE;
 		int y = (U.h-screenY-yOffset)/U.SPRITESIZE;
-		Gdx.app.log("Grid", "clicked on " + screenX + "," + screenY + " converted to " + x + "," + y);
+//		Gdx.app.log("Grid", "clicked on " + screenX + "," + screenY + " converted to " + x + "," + y);
 		if(x < sizeX && x >= 0 &&
 				y < sizeY && y >= 0){
 			sockets[x][y].touchDown(button);
+			statistics.update();
+			goal.checkGoal(statistics.statsArray);
 		}
-		statistics.update();
-		
-		
+		else {
+			advanceLevel = goal.isReached;
+		}
+		return advanceLevel;
 	}
 
 }

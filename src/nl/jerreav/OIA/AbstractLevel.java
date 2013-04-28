@@ -6,6 +6,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Array;
 
 public class AbstractLevel implements Screen {
@@ -17,6 +18,7 @@ public class AbstractLevel implements Screen {
 	GameInputProcessor gameInputProcessor;
 	Goal goal;
 	Screen nextLevel;
+	static Texture quitTexture = new Texture(Gdx.files.internal("pics/quit.png"));
 	
 	AbstractLevel(Game _game){
 		game = _game;
@@ -37,7 +39,9 @@ public class AbstractLevel implements Screen {
 	goal.render();
 	
 	U.font.setColor(0.5f, 0.5f, 0.5f, 1.0f);
-	U.font.draw(U.batch, Integer.toString((int)(1.0f/Gdx.graphics.getDeltaTime()+0.5f)), 0, U.h-0);
+//	U.font.draw(U.batch, Integer.toString((int)(1.0f/Gdx.graphics.getDeltaTime()+0.5f)), 0, U.h-0);
+
+	U.batch.draw(quitTexture,U.w-U.SPRITESIZE,U.SPRITESIZE*3/2,U.SPRITESIZE,U.SPRITESIZE/2);
 	U.batch.end();
 
 	}
@@ -51,6 +55,8 @@ public class AbstractLevel implements Screen {
 	@Override
 	public void show() {
 		Gdx.input.setInputProcessor(gameInputProcessor);
+
+		grid.sequencer.start();
 
 	}
 

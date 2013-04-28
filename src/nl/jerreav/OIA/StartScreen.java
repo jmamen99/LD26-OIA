@@ -9,13 +9,15 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont.TextBounds;
 public class StartScreen implements Screen {
 
 	Game game;
-	String title = "OIA 0.14";
-	String subTitle = "Minimize Puzzles  -  Create Minimal Artworks  -  Click Somewhere To Start";
+	String title;
+	String subTitle;
+	String subTitle2;
 	StartInputProcessor startInputProcessor;
+	Screen nextScreen;
 	
 	StartScreen(Game _game){
 		game = _game;
-		startInputProcessor = new StartInputProcessor(game);
+		startInputProcessor = new StartInputProcessor(game,this);
 
 	}
 	
@@ -32,8 +34,10 @@ public class StartScreen implements Screen {
 		U.font.setColor(0.5f, 0.5f, 0.5f, 1.0f);
 		TextBounds tb = U.fontLarge.getBounds(title);
 		TextBounds tbSub = U.font.getBounds(subTitle);
+		TextBounds tbSub2 = U.font.getBounds(subTitle2);
 		U.fontLarge.draw(U.batch, title, U.w/2-tb.width/2, U.h/2+tb.height/2);
-		U.font.draw(U.batch,subTitle, U.w/2-tbSub.width/2, U.h/2-tb.height/2-16);
+		U.font.draw(U.batch,subTitle, U.w/2-tbSub.width/2, U.h/2-tb.height/2-32);
+		U.font.draw(U.batch,subTitle2, U.w/2-tbSub2.width/2, U.h/2-tb.height/2-64);
 		
 //		U.font.draw(U.batch, Integer.toString((int)(1.0f/Gdx.graphics.getDeltaTime()+0.5f)), 0, U.h-0);
 		U.batch.end();
