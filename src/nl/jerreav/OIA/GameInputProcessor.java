@@ -19,6 +19,9 @@ public class GameInputProcessor implements InputProcessor {
 		case Keys.Q:
 			level.game.setScreen(new RealStartScreen(level.game));
 			break;
+		case Keys.H:
+			level.grid.showHelp = !level.grid.showHelp;
+			break;
 		case Keys.S:
 			if(level.grid.sequencer.isPlaying){
 				level.grid.sequencer.stop();
@@ -45,7 +48,10 @@ public class GameInputProcessor implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		if(level.grid.touchDown(screenX,screenY,pointer,button)){
+		if(level.grid.showHelp){
+			level.grid.showHelp = false;
+		}
+		else if(level.grid.touchDown(screenX,screenY,pointer,button)){
 			level.game.setScreen(level.nextLevel);
 		}
 		return false;

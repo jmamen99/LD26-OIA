@@ -39,10 +39,11 @@ public class AbstractLevel implements Screen {
 	grid.render();
 	goal.render();
 	
-	U.font.setColor(0.5f, 0.5f, 0.5f, 1.0f);
+//	U.font.setColor(0.5f, 0.5f, 0.5f, 1.0f);
 //	U.font.draw(U.batch, Integer.toString((int)(1.0f/Gdx.graphics.getDeltaTime()+0.5f)), 0, U.h-0);
-
-	U.batch.draw(quitTexture,U.w-U.SPRITESIZE,U.SPRITESIZE*3/2,U.SPRITESIZE,U.SPRITESIZE/2);
+	if(false == grid.showHelp){
+		U.batch.draw(quitTexture,U.w-U.SPRITESIZE,U.SPRITESIZE*3/2,U.SPRITESIZE,U.SPRITESIZE/2);
+	}
 	U.batch.end();
 
 	}

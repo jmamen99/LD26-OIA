@@ -17,7 +17,10 @@ public class Grid {
 	Goal goal;
 	private int yOffset = (int)(1.5*U.SPRITESIZE);
 	private int xOffset = (int)(1.5*U.SPRITESIZE);
-	Texture vink = new Texture(Gdx.files.internal("pics/vink.png"));
+	static Texture vink = new Texture(Gdx.files.internal("pics/vink.png"));
+	static Texture helpIcon = new Texture(Gdx.files.internal("pics/helpicon.png"));
+	static Texture helpScreen = new Texture(Gdx.files.internal("pics/help.png"));
+	boolean showHelp = false;
 	
 	
 	Grid(int _sizeX, int _sizeY, String path, Goal _goal){
@@ -83,8 +86,13 @@ public class Grid {
 		else{
 			U.fontLarge.setColor(0.5f,0.5f,0.5f,1);
 		}
+
+		U.batch.draw(helpIcon, U.w-U.SPRITESIZE,U.SPRITESIZE/2+2*U.SPRITESIZE,U.SPRITESIZE,U.SPRITESIZE/2);
 		TextBounds tb = U.fontLarge.getBounds("" + statistics.totalTiles);
 		U.fontLarge.draw(U.batch, "" + statistics.totalTiles, U.w-tb.width , U.h/2+tb.height/2);
+		if(showHelp){
+			U.batch.draw(helpScreen, 0, U.h-(2*256), 2*512, 2*256);
+		}
 	}
 
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
